@@ -1,12 +1,9 @@
 import paho.mqtt.client as mqtt
-from flask import Flask, request
 import cv2
 import os
 import time
 
 cam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-
-app = Flask(__name__)
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
