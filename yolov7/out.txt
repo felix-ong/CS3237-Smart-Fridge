@@ -1,0 +1,10 @@
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, Done. (4451.2ms) Inference, (3.0ms) NMS
+ The image with the result is saved in: runs\detect\exp6\test.jpg
+Done. (4.488s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, Done. (4186.2ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp7\test.jpg
+Done. (4.215s)
