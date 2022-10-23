@@ -8,3 +8,424 @@ Fusing layers...
 1 person, Done. (4186.2ms) Inference, (5.0ms) NMS
  The image with the result is saved in: runs\detect\exp7\test.jpg
 Done. (4.215s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, 1 chair, Done. (3718.9ms) Inference, (16.0ms) NMS
+ The image with the result is saved in: runs\detect\exp8\test.jpg
+Done. (3.781s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, 1 chair, Done. (3681.4ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp9\test.jpg
+Done. (3.712s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, 1 chair, Done. (3943.0ms) Inference, (40.7ms) NMS
+ The image with the result is saved in: runs\detect\exp10\test.jpg
+Done. (4.011s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, 1 bottle, Done. (3887.7ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp11\test.jpg
+Done. (3.951s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, 1 bottle, 3 cups, Done. (3849.3ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp12\test.jpg
+Done. (3.878s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 cups, 1 toilet, Done. (3819.5ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp13\test.jpg
+Done. (3.850s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 bottle, Done. (3895.7ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp14\test.jpg
+Done. (3.927s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 bottle, Done. (3820.5ms) Inference, (3.0ms) NMS
+ The image with the result is saved in: runs\detect\exp15\test.jpg
+Done. (3.846s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 bottle, Done. (3893.9ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp16\test.jpg
+Done. (3.923s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 bottle, 1 cup, Done. (3869.2ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp17\test.jpg
+Done. (3.899s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 bottle, 1 cup, Done. (3863.1ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp18\test.jpg
+Done. (3.889s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 bottle, Done. (3825.6ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp19\test.jpg
+Done. (3.856s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 bottle, Done. (3819.9ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp20\test.jpg
+Done. (3.847s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+Done. (4061.3ms) Inference, (3.0ms) NMS
+ The image with the result is saved in: runs\detect\exp21\test.jpg
+Done. (4.087s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 banana, 2 apples, Done. (3762.0ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp22\test.jpg
+Done. (3.789s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 banana, 1 apple, Done. (3739.2ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp23\test.jpg
+Done. (3.768s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, Done. (3830.9ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp24\test.jpg
+Done. (3.861s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 banana, 2 vases, Done. (3745.0ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp25\test.jpg
+Done. (3.771s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+Done. (3718.0ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp26\test.jpg
+Done. (3.746s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, 1 chair, 1 dining table, Done. (4045.7ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp28\test.jpg
+Done. (4.075s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, 1 chair, Done. (4032.0ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp29\test.jpg
+Done. (4.062s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, 1 chair, Done. (4048.5ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp30\test.jpg
+Done. (4.076s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, 1 chair, Done. (4012.4ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp31\test.jpg
+Done. (4.048s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, 1 chair, 1 dining table, Done. (3992.1ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp32\test.jpg
+Done. (4.022s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, 1 chair, 1 dining table, Done. (4183.8ms) Inference, (3.0ms) NMS
+ The image with the result is saved in: runs\detect\exp33\test.jpg
+Done. (4.212s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, 2 chairs, 1 dining table, Done. (4143.2ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp34\test.jpg
+Done. (4.174s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+5 persons, 2 chairs, 1 dining table, Done. (4089.2ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp35\test.jpg
+Done. (4.123s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, 2 chairs, 1 dining table, Done. (4051.5ms) Inference, (3.0ms) NMS
+ The image with the result is saved in: runs\detect\exp36\test.jpg
+Done. (4.082s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, Done. (4109.4ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp37\test.jpg
+Done. (4.142s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, Done. (4969.0ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp38\test.jpg
+Done. (5.004s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, Done. (4230.7ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp39\test.jpg
+Done. (4.259s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, Done. (4379.3ms) Inference, (3.0ms) NMS
+ The image with the result is saved in: runs\detect\exp40\test.jpg
+Done. (4.409s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, Done. (4518.8ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp41\test.jpg
+Done. (4.547s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (4745.9ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp42\test.jpg
+Done. (4.775s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5095.7ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp43\test.jpg
+Done. (5.124s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, Done. (5101.4ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp44\test.jpg
+Done. (5.131s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, Done. (5159.5ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp45\test.jpg
+Done. (5.188s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, Done. (5014.5ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp46\test.jpg
+Done. (5.043s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, Done. (4754.9ms) Inference, (3.0ms) NMS
+ The image with the result is saved in: runs\detect\exp47\test.jpg
+Done. (4.782s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, Done. (4364.1ms) Inference, (3.0ms) NMS
+ The image with the result is saved in: runs\detect\exp48\test.jpg
+Done. (4.391s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, Done. (4700.8ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp49\test.jpg
+Done. (4.731s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, Done. (4619.2ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp50\test.jpg
+Done. (4.653s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (4977.2ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp51\test.jpg
+Done. (5.006s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (4457.5ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp52\test.jpg
+Done. (4.487s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (4573.6ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp53\test.jpg
+Done. (4.604s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5010.2ms) Inference, (5.5ms) NMS
+ The image with the result is saved in: runs\detect\exp54\test.jpg
+Done. (5.042s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (4427.5ms) Inference, (4.5ms) NMS
+ The image with the result is saved in: runs\detect\exp55\test.jpg
+Done. (4.457s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5082.2ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp56\test.jpg
+Done. (5.112s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5257.4ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp57\test.jpg
+Done. (5.288s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (4059.3ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp58\test.jpg
+Done. (4.091s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, Done. (5021.5ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp59\test.jpg
+Done. (5.050s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, 1 tv, Done. (4785.7ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp61\test.jpg
+Done. (4.817s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, 1 tv, Done. (5121.3ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp62\test.jpg
+Done. (5.151s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, Done. (5317.7ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp63\test.jpg
+Done. (5.346s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, Done. (5061.7ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp64\test.jpg
+Done. (5.091s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, Done. (5095.9ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp65\test.jpg
+Done. (5.126s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, 1 tv, Done. (5357.5ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp66\test.jpg
+Done. (5.388s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+1 person, Done. (4945.5ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp67\test.jpg
+Done. (4.976s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5071.2ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp68\test.jpg
+Done. (5.102s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, 1 tv, Done. (5573.3ms) Inference, (5.1ms) NMS
+ The image with the result is saved in: runs\detect\exp69\test.jpg
+Done. (5.603s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, Done. (5766.9ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp70\test.jpg
+Done. (5.798s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, Done. (5113.4ms) Inference, (3.5ms) NMS
+ The image with the result is saved in: runs\detect\exp71\test.jpg
+Done. (5.143s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, Done. (5589.8ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp72\test.jpg
+Done. (5.619s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, Done. (4990.3ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp73\test.jpg
+Done. (5.021s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, Done. (5436.0ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp74\test.jpg
+Done. (5.468s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5424.7ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp75\test.jpg
+Done. (5.455s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, Done. (5380.5ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp76\test.jpg
+Done. (5.410s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, Done. (5388.0ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp78\test.jpg
+Done. (5.420s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, Done. (4662.7ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp79\test.jpg
+Done. (4.695s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5091.1ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp80\test.jpg
+Done. (5.121s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, Done. (5913.6ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp81\test.jpg
+Done. (5.946s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5153.5ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp82\test.jpg
+Done. (5.185s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, 1 tv, Done. (5223.8ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp83\test.jpg
+Done. (5.254s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, 1 tv, Done. (5611.7ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp84\test.jpg
+Done. (5.639s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5537.9ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp85\test.jpg
+Done. (5.568s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+4 persons, Done. (5346.1ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp86\test.jpg
+Done. (5.376s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, 1 tv, Done. (5659.8ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp87\test.jpg
+Done. (5.691s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5293.7ms) Inference, (3.0ms) NMS
+ The image with the result is saved in: runs\detect\exp88\test.jpg
+Done. (5.323s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5175.0ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp89\test.jpg
+Done. (5.205s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, Done. (5375.0ms) Inference, (5.0ms) NMS
+ The image with the result is saved in: runs\detect\exp90\test.jpg
+Done. (5.410s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, 1 tv, Done. (5086.5ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp91\test.jpg
+Done. (5.118s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+2 persons, 1 tv, Done. (5437.0ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp92\test.jpg
+Done. (5.464s)
+Namespace(agnostic_nms=False, augment=False, classes=None, conf_thres=0.5, device='', exist_ok=False, img_size=1280, iou_thres=0.45, name='exp', no_trace=True, nosave=False, project='runs/detect', save_conf=False, save_txt=False, source='test.jpg', update=False, view_img=False, weights=['yolov7-e6e.pt'])
+Fusing layers... 
+3 persons, Done. (5231.8ms) Inference, (4.0ms) NMS
+ The image with the result is saved in: runs\detect\exp93\test.jpg
+Done. (5.260s)
