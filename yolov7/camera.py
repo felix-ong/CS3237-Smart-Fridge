@@ -23,8 +23,16 @@ def on_message(client, userdata, msg):
         print("Fridge door is open!")
         time.sleep(2)
         # Take picture using camera, then run YOLO model and save counts to database
-        result, image = cam.read()
+        _, image = cam.read()
+        scale_percent = 50 # percent of original size
+        width = int(image.shape[1] * scale_percent / 100)
+        height = int(image.shape[0] * scale_percent / 100)
+        dim = (width, height)
+        # resize image
+        image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
+
         print("Photo taken!")
+        print(f"Image size: {image.shape}")
         image = json.dumps(image.tolist())
         client.publish("fridge/photo", image)
         time.sleep(50)
