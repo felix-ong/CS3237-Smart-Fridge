@@ -5,6 +5,7 @@ import os
 import time
 import pickle
 from collections import defaultdict
+import numpy as np
 
 import firebase_admin
 from firebase_admin import firestore
@@ -12,7 +13,12 @@ from firebase_admin import credentials
 
 cam = cv2.VideoCapture(1, cv2.CAP_DSHOW)
 
+prevImg = None
 
+def is_dark_image(img):
+    v = np.average(img)
+    print(f"Dark value: {v}")
+    return v < 40
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
@@ -31,11 +37,19 @@ def on_message(client, userdata, msg):
         # resize image
         image = cv2.resize(image, dim, interpolation = cv2.INTER_AREA)
 
-        print("Photo taken!")
-        print(f"Image size: {image.shape}")
-        image = json.dumps(image.tolist())
-        client.publish("fridge/photo", image)
-        time.sleep(50)
+        print(f"Photo taken!\nSize: {image.shape}")
+
+        '''
+        If image is dark, send prevImg to process (if prevImg exists and is not also dark).
+        We do this to account for any delays between photoresistor detecting close and actual close time.
+        '''
+        if is_dark_image(image) and (prevImg != None).all() and not is_dark_image(prevImg):
+            print(f"Detected a dark image. Sending last usable picture..")
+            client.publish("fridge/photo", json.dumps(prevImg.tolist()))
+
+        prevImg = image
+        
+        # time.sleep(50)
         # time.sleep(5)
         # if result:
             # TODO: figure out a way to save only the counts of that last frame before door close

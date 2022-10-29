@@ -25,58 +25,60 @@ from firebase_admin import firestore
 from firebase_admin import credentials
 import json
 
-
+from datetime import datetime
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
     client.subscribe("fridge/photo")
 
 def on_message(client, userdata, msg):
-    print("")
     if msg.payload:  # take photos every ?s until door is closed
-        print("Photo sent!")
         # Take picture using camera, then run YOLO model and save counts to database
-        print("bytearray")
-        print(msg.payload)
-        print("decoded")
-        print(json.loads(msg.payload))
-        # time.sleep(5)
-        # TODO: figure out a way to save only the counts of that last frame before door close
-        # Run command line
-        # results = detect()
-        # dict1 = defaultdict(lambda x: 0)
+        image = json.loads(msg.payload)
+        print(f"Photo received!\nSize: {(len(image), len(image[0]), len(image[0][0]))}")
+
+        # TODO: figure out a way to run only on last frame before door closes
+        
+        results = detect()
 
         # TODO: get this value from firebase/predicted
         THRESHOLD = 2
 
-        # sensor_val = ""
-        # firestore_payload = {}
-        # for item in FRIDGE_ITEMS:
-        #     if item == "banana":
-        #         count = results[item] if item in results else 0
-        #         firestore_payload[item] = count
-        #         if not count:  # count == 0
-        #             sensor_val = "r"
-        #         elif count < THRESHOLD:
-        #             sensor_val = "y"
-        #         else:
-        #             sensor_val = "g"
-        #         print(sensor_val)
-        #
-        #     curr_time = time.time()
-        #     firestore_payload['timestamp'] = curr_time
-        #
-        #     # TODO: make doc title day/month/year so that new updates coalesce into same doc
-        #     # that way we can use prev doc to use for count
-        #     # when we generate fake data, generate to yesterdays date
-        #     # also when there is no data for that day, copy over previous count for that day
-        #
-        #     # send to firestore
-        #     doc_ref = db.collection(str('stocks')).document(str(curr_time))
-        #     doc_ref.set(firestore_payload)
-        #
-        #     # pub to stock thread
-        #     client.publish("fridge/stock", sensor_val)
+        sensor_val = ""
+        firestore_payload = {}
+        for item in FRIDGE_ITEMS:
+            if item == "banana": # TODO: JUST FOR TESTING
+                count = results[item] if item in results else 0
+                firestore_payload[item] = count
+                if not count:  # count == 0
+                    sensor_val = "r"
+                elif count < THRESHOLD:
+                    sensor_val = "y"
+                else:
+                    sensor_val = "g"
+                print(f"{item} count is: {count}")
+
+            print(f"Sending sensor color: {sensor_val}")
+
+            '''
+            NOTE: We are making doc titles date format so that new count updates
+            within the same day updates the same doc.
+
+            Having just 1 end of the day count so we can avoid group-bys etc.
+            '''
+            current_date = datetime.now().strftime("%m/%d/%Y")
+            firestore_payload['timestamp'] = current_date # or make this a value that firestore understands so we can query timeframes
+        
+            # that way we can use prev doc to use for count
+            # when we generate fake data, generate to yesterdays date
+            # also when there is no data for that day, copy over previous count for that day
+        
+            # send to firestore
+            doc_ref = db.collection(str('stocks')).document(current_date)
+            doc_ref.set(firestore_payload)
+        
+            # pub to stock thread
+            client.publish("fridge/stock", sensor_val)
     else:
         print("Fridge door is closed.")
 
@@ -176,18 +178,18 @@ def detect(save_img=False):
             save_path = str(save_dir / p.name)  # img.jpg
             txt_path = str(save_dir / 'labels' / p.stem) + ('' if dataset.mode == 'image' else f'_{frame}')  # img.txt
             gn = torch.tensor(im0.shape)[[1, 0, 1, 0]]  # normalization gain whwh
+
+            results = {}
+
             if len(det):
                 # Rescale boxes from img_size to im0 size
                 det[:, :4] = scale_coords(img.shape[2:], det[:, :4], im0.shape).round()
 
-                # Print results
-                results = {}
                 for c in det[:, -1].unique():
                     n = (det[:, -1] == c).sum()  # detections per class
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
                     results[names[int(c)]] = n
 
-                return results
                 # with open("counts.txt", "w+") as f:
                 #     f.write("")
                 # with open("counts.txt", "a") as f:
@@ -209,9 +211,9 @@ def detect(save_img=False):
                 #         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)], line_thickness=1)
 
             # Print time (inference + NMS)
-            print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms) NMS')
 
-            return {}
+            print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms) NMS')
+            return results
 
             # Stream results
             # if view_img:
