@@ -5,16 +5,21 @@ import time
 import numpy as np
 
 from threading import Thread
+from threading import Lock
 
 cam = cv2.VideoCapture(1, cv2.CAP_DSHOW)
-
-busy = False
+photo_lock = Lock()
 
 def take_photos():
-    global busy
-    busy = True
+    # discard job if another is running photos (don't add to waiting queue)
+    # we don't want to act on old fridge values
+    ret = photo_lock.acquire(blocking=False)
+    if not ret:
+        return
+
     prevImg = None
     while True:
+        # take photos every x seconds until door is closed
         time.sleep(0.5)
         # Take picture using camera, then run YOLO model and save counts to database
         result, image = cam.read()
@@ -30,7 +35,7 @@ def take_photos():
 
         prevImg = image
 
-    busy = False
+    photo_lock.release()
 
 def is_dark_image(img):
     v = np.average(img)
@@ -41,18 +46,22 @@ def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
     client.subscribe("fridge/photoresistor")
 
-def on_message(client, userdata, msg):
-    if int(msg.payload) > 500: # take photos every 2s until door is closed
-        print("Fridge door is open!")
-        # spawn a new thread to take care of the camera photos
-        # so we can continue to receive new messages
-        # TODO: not thread safe, use threadpoolexecutor
+prev = -1
 
-        global busy
-        if not busy:
+def on_message(client, userdata, msg):
+    global prev
+    door_open = 500
+    if int(msg.payload) > door_open:
+        if int(prev) <= door_open:
+            print("Fridge door is open!")
+            # spawn a new thread to take care of the camera photos
+            # so we can continue to receive new messages
             Thread(target=take_photos).start()
     else:
-        print("Fridge door is closed.")
+        if int(prev) == -1 or int(prev) > door_open:
+            print("Fridge door is closed.")
+
+    prev = msg.payload
     
 client = mqtt.Client()
 client.on_connect = on_connect
@@ -61,4 +70,3 @@ client.on_message = on_message
 print("Connecting")
 client.connect("172.31.96.109", 1883, 60)
 client.loop_forever()
-
