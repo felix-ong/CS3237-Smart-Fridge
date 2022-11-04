@@ -70,7 +70,7 @@ def on_message(client, userdata, msg):
 
             Having just 1 end of the day count so we can avoid group-bys etc.
             '''
-            current_date = datetime.now().strftime("%d/%m/%Y")
+            current_date = datetime.now().strftime("%Y%m%d")
             firestore_payload['timestamp'] = current_date # or make this a value that firestore understands so we can query timeframes
         
             # that way we can use prev doc to use for count
