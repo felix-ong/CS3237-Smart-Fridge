@@ -44,45 +44,63 @@ def on_message(client, userdata, msg):
 
         with torch.no_grad():
             results = detect(image)
-
-        # TODO: get this value from firebase/predicted
-        THRESHOLD = 2
-
+        if (firebase_data):
+            b_threshold = db.collection(str('predict')).document(str('banana')).get().to_dict()['predicted_data']
+            a_threshold = db.collection(str('predict')).document(str('apple')).get().to_dict()['predicted_data']
+            e_threshold = db.collection(str('predict')).document(str('egg')).get().to_dict()['predicted_data']
+            thresholds = {'banana':sum(b_threshold), 'apple':sum(a_threshold), 'egg':sum(e_threshold)}
+        else:
+            thresholds = {'banana':3, 'apple':4, 'egg':5}
         sensor_val = ""
         firestore_payload = {}
         for item in FRIDGE_ITEMS:
-            if item == "banana": # TODO: JUST FOR TESTING
-                count = results[item] if item in results else 0
-                firestore_payload[item] = count
-                if not count:  # count == 0
-                    sensor_val = "r"
-                elif count < THRESHOLD:
-                    sensor_val = "y"
-                else:
-                    sensor_val = "g"
-                print(f"{item} count is: {count}")
+            # if item == "banana": # TODO: JUST FOR TESTING
+            #     count = results[item] if item in results else 0
+            #     firestore_payload[item] = int(count)
+            #     if not count:  # count == 0
+            #         sensor_val = "r"
+            #     elif count < THRESHOLD:
+            #         sensor_val = "y"
+            #     else:
+            #         sensor_val = "g"
+            #     print(f"{item} count is: {count}")
 
-                print(f"Sending sensor color: {sensor_val}")
+            #     print(f"Sending sensor color: {sensor_val}")
+            count = results[item] if item in results else 0
+            firestore_payload[item] = int(count)
+        no_stock = 0
+        items_below_threshold = []
+        for t in (thresholds):
+            if firestore_payload[t] < thresholds[t]:
+                no_stock += 1
+                items_below_threshold.append(ITEM_COLOURS[t])
+                
+        if no_stock == len(thresholds):
+            sensor_val = "r"
+        elif no_stock > 0:
+            sensor_val = ''.join(items_below_threshold)
+        else:
+            sensor_val = "g"
+            
+        '''
+        NOTE: We are making doc titles date format so that new count updates
+        within the same day updates the same doc.
 
-            '''
-            NOTE: We are making doc titles date format so that new count updates
-            within the same day updates the same doc.
-
-            Having just 1 end of the day count so we can avoid group-bys etc.
-            '''
-            current_date = datetime.now().strftime("%Y%m%d")
-            firestore_payload['timestamp'] = current_date # or make this a value that firestore understands so we can query timeframes
-        
-            # that way we can use prev doc to use for count
-            # when we generate fake data, generate to yesterdays date
-            # also when there is no data for that day, copy over previous count for that day
-        
-            # send to firestore
-            doc_ref = db.collection(str('stocks')).document(current_date)
-            doc_ref.set(firestore_payload)
-        
-            # pub to stock thread
-            client.publish("fridge/stock", sensor_val)
+        Having just 1 end of the day count so we can avoid group-bys etc.
+        '''
+        current_date = datetime.now().strftime("%Y%m%d")
+        firestore_payload['timestamp'] = current_date # or make this a value that firestore understands so we can query timeframes
+    
+        # that way we can use prev doc to use for count
+        # when we generate fake data, generate to yesterdays date
+        # also when there is no data for that day, copy over previous count for that day
+    
+        # send to firestore
+        doc_ref = db.collection(str('stocks')).document(current_date)
+        doc_ref.set(firestore_payload)
+        print(sensor_val)
+        # pub to stock thread
+        client.publish("fridge/stock", sensor_val)
     else:
         print("Fridge door is closed.")
 
@@ -204,13 +222,15 @@ cred = credentials.Certificate('cs3237-fridge-firebase-adminsdk-d14fo-88295eb35b
 app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-FRIDGE_ITEMS = ['banana', 'apple', 'bottle']
+FRIDGE_ITEMS = ['banana', 'apple', 'egg']
+ITEM_COLOURS = {'banana':'y', 'apple':'b', 'egg':'w'}
+firebase_data = True
 
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
 print("Connecting")
-client.connect("172.25.104.209", 1883, 60)
+client.connect("172.31.97.73", 1883, 60)
 client.loop_forever()
 

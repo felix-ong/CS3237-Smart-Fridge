@@ -68,5 +68,5 @@ client.on_connect = on_connect
 client.on_message = on_message
 
 print("Connecting")
-client.connect("172.31.96.109", 1883, 60)
+client.connect("172.31.97.73", 1883, 60)
 client.loop_forever()
