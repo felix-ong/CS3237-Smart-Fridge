@@ -9,7 +9,7 @@ const char* password = SECRET_PASS; //Wifi Password
 WiFiClient wifiClient;
 MqttClient mqttClient(wifiClient);
 
-const char* broker = "172.25.104.209";
+const char* broker = "test.mosquitto.org";
 int port = 1883;
 const char* topic = "fridge/stock";
 
@@ -17,10 +17,19 @@ const char* topic = "fridge/stock";
 const long interval = 10000;
 unsigned long previousMillis = 0;
 
+
 int count = 0;
 
+int redPin     = D5;
+int greenPin   = D4;
+int bluePin    = D3;
+
 void setup() {
+  
   // put your setup code here, to run once:
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
   Serial.begin(9600);
   WiFi.begin(ssid, password);
   Serial.println("");
@@ -40,7 +49,7 @@ void setup() {
   Serial.println(WiFi.localIP());
   Serial.print("Attempting to connect to the MQTT broker: ");
   Serial.println(broker);
-
+//
   if (!mqttClient.connect(broker, port)) {
     Serial.print("MQTT connection failed! Error code = ");
     Serial.println(mqttClient.connectError());
@@ -64,16 +73,30 @@ void onMqttMessage(int messageSize) {
 
   // use the Stream interface to print the contents
   while (mqttClient.available()) {
-    Serial.print((char)mqttClient.read());
+    char v = (char)mqttClient.read();
+    Serial.print(v);
+    if (v == 'r') {
+      setColor(255, 0, 0);
+  } else if (v == 'y') {
+      setColor(255,255,0);
+  } else {
+    setColor(0, 255, 0);
   }
+  }
+
   Serial.println();
   Serial.println();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
   // call poll() regularly to allow the library to send MQTT keep alive which
   // avoids being disconnected by the broker
   mqttClient.poll();
+}
+
+void setColor(int redValue, int greenValue, int blueValue) {
+  analogWrite(redPin, redValue);
+  analogWrite(greenPin, greenValue);
+  analogWrite(bluePin, blueValue);
 }
