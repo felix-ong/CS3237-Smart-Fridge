@@ -54,18 +54,6 @@ def on_message(client, userdata, msg):
         sensor_val = ""
         firestore_payload = {}
         for item in FRIDGE_ITEMS:
-            # if item == "banana": # TODO: JUST FOR TESTING
-            #     count = results[item] if item in results else 0
-            #     firestore_payload[item] = int(count)
-            #     if not count:  # count == 0
-            #         sensor_val = "r"
-            #     elif count < THRESHOLD:
-            #         sensor_val = "y"
-            #     else:
-            #         sensor_val = "g"
-            #     print(f"{item} count is: {count}")
-
-            #     print(f"Sending sensor color: {sensor_val}")
             count = results[item] if item in results else 0
             firestore_payload[item] = int(count)
         no_stock = 0
@@ -73,12 +61,12 @@ def on_message(client, userdata, msg):
         for t in (thresholds):
             if firestore_payload[t] < thresholds[t]:
                 no_stock += 1
-                items_below_threshold.append(ITEM_COLOURS[t])
+                # items_below_threshold.append(ITEM_COLOURS[t])
                 
         if no_stock == len(thresholds):
             sensor_val = "r"
         elif no_stock > 0:
-            sensor_val = ''.join(items_below_threshold)
+            sensor_val = "y"
         else:
             sensor_val = "g"
             
