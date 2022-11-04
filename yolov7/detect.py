@@ -40,7 +40,7 @@ def on_message(client, userdata, msg):
         cv2.imwrite('test.jpg', np.array(image))
         print(f"Photo received!\nSize: {(len(image), len(image[0]), len(image[0][0]))}")
 
-        # TODO: figure out a way to run only on last frame before door closes
+        # TODO: can send this photo to app/firebase for user
 
         with torch.no_grad():
             results = detect(image)
@@ -70,7 +70,7 @@ def on_message(client, userdata, msg):
 
             Having just 1 end of the day count so we can avoid group-bys etc.
             '''
-            current_date = datetime.now().strftime("%m/%d/%Y")
+            current_date = datetime.now().strftime("%d/%m/%Y")
             firestore_payload['timestamp'] = current_date # or make this a value that firestore understands so we can query timeframes
         
             # that way we can use prev doc to use for count
