@@ -84,7 +84,7 @@ def on_message(client, userdata, msg):
         # also when there is no data for that day, copy over previous count for that day
     
         # send to firestore
-        doc_ref = db.collection(str('stocks')).document(current_date)
+        doc_ref = db.collection('stocks').document(current_date)
         doc_ref.set(firestore_payload)
         print(sensor_val)
         # pub to stock thread
