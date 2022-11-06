@@ -25,6 +25,9 @@ from firebase_admin import firestore
 from firebase_admin import credentials
 import json
 
+import io
+import base64
+
 from datetime import datetime
 
 def on_connect(client, userdata, flags, rc):
@@ -35,11 +38,8 @@ def on_message(client, userdata, msg):
     if msg.payload:  # take photos every ?s until door is closed
         # Take picture using camera, then run YOLO model and save counts to database
         image = json.loads(msg.payload)
-        print(type(image))
         cv2.imwrite('test.jpg', np.array(image))
         print(f"Photo received!\nSize: {(len(image), len(image[0]), len(image[0][0]))}")
-
-        # TODO: can send this photo to app/firebase for user
 
         with torch.no_grad():
             results = detect(image)
@@ -71,7 +71,7 @@ def on_message(client, userdata, msg):
             sensor_val = "y"
         else:
             sensor_val = "g"
-            
+
         '''
         NOTE: We are making doc titles date format so that new count updates
         within the same day updates the same doc.
@@ -134,7 +134,14 @@ def on_message(client, userdata, msg):
         else: # no current stock count, this is the first run and we can just pass.
             pass
 
-        # update current stock to firestore
+        # -- UPDATE CURRENT STOCK TO FIREBASE -- #
+
+        # save image alongside everything
+        my_base64_jpgData = None
+        with open("test.jpg", "rb") as image_file:
+            my_base64_jpgData = base64.b64encode(image_file.read())
+        firestore_payload['img_base64'] = "" if not my_base64_jpgData else my_base64_jpgData.decode('ascii')
+
         stocks_ref.set(firestore_payload)
 
         print(sensor_val)

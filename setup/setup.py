@@ -42,6 +42,7 @@ doc_ref.set({
     'banana': 1,
     'orange': 1,
     'timestamp': yesterday,
+    'img_base64': "",
 })
 doc_ref = db.collection('stocks').document(two_days_ago)
 doc_ref.set({
@@ -49,6 +50,7 @@ doc_ref.set({
     'banana': 1,
     'orange': 1,
     'timestamp': two_days_ago,
+    'img_base64': "",
 })
 
 '''
