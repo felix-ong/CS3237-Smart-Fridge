@@ -102,6 +102,7 @@ def predict_on_config_change():
         config = db.collection('config').document('config').get().to_dict()
         h, p = config['historical_window'], config['prediction_window']
         if h != curr_h or p != curr_p:
+            print('detected config change! running prediction with new params...')
             stock_predict(db)
             # update local vals
             curr_h, curr_p = h, p
