@@ -141,7 +141,8 @@ def DISPLAY_DATA(now, y, yhat, item_name):
         
     plt.title(f"{item_name.capitalize()} Prediction")
     plt.yticks(yTicks)
-    plt.xticks(xTicks, rotation=70) # week interval x-axis
+    # plt.xticks(xTicks, rotation=70) # this cuts off labels when save
+    plt.xticks(xTicks) # week interval x-axis
     plt.vlines(verticalTicks, min(min(y_), min(yhat_)), max(max(y_), max(yhat_)) + 1, "red", "dotted")
     plt.xlabel('Day')
     plt.ylabel(f'Predicted item consumption of {item_name}')
