@@ -9,7 +9,7 @@ const char* password = SECRET_PASS; //Wifi Password
 WiFiClient wifiClient;
 MqttClient mqttClient(wifiClient);
 
-const char* broker = "172.25.105.154";
+const char* broker = "192.168.199.37";
 int port = 1883;
 const char* topic = "fridge/stock";
 

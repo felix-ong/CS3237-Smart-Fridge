@@ -1,2 +1,2 @@
-#define SECRET_SSID "Felix"
-#define SECRET_PASS "fowc0630"
+#define SECRET_SSID "FOCO F4"
+#define SECRET_PASS "prdm6387"
