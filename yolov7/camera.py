@@ -22,9 +22,9 @@ def take_photos():
         # take photos every x seconds until door is closed
         time.sleep(1)
         # Take picture using camera, then run YOLO model and save counts to database
-        result, image = cam.read()
+        res, image = cam.read()
 
-        if not result: return
+        if not res: continue # retry until camera is working
 
         print(f"Photo taken!\nSize: {image.shape}")
 

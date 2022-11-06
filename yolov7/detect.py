@@ -82,10 +82,51 @@ def on_message(client, userdata, msg):
         # that way we can use prev doc to use for count
         # when we generate fake data, generate to yesterdays date
         # also when there is no data for that day, copy over previous count for that day
-    
-        # send to firestore
-        doc_ref = db.collection('stocks').document(current_date)
-        doc_ref.set(firestore_payload)
+
+        stocks_ref = db.collection('stocks').document(current_date)
+
+        # calculate consumption currently
+        consumption = db.collection('consumption').document(current_date).get()
+        if consumption.exists and stocks_ref.get().exists:
+            s = stocks_ref.get().to_dict()
+
+            # previous stock count - current stock count
+            curr_c = {
+                'apple': s['apple'] - firestore_payload['apple'],
+                'banana': s['banana'] - firestore_payload['banana'],
+                'egg': s['egg'] - firestore_payload['egg'],
+            }
+
+            c = consumption.to_dict()
+            # only add to today's total consumption if the consumption was positive
+            c['apple'] += curr_c['apple'] if curr_c['apple'] > 0 else 0
+            c['banana'] += curr_c['banana'] if curr_c['banana'] > 0 else 0
+            c['egg'] += curr_c['egg'] if curr_c['egg'] > 0 else 0
+
+            # update the consumption!
+            c_ref = db.collection('consumption').document(current_date)
+            c_ref.set(c)
+        elif stocks_ref.get().exists:
+            s = stocks_ref.get().to_dict()
+
+            # previous stock count - current stock count
+            c1, c2, c3 = s['apple'] - firestore_payload['apple'], s['banana'] - firestore_payload['banana'], s['egg'] - firestore_payload['egg']
+            # only put consumption if it was positive
+            curr_c = {
+                'apple': c1 if c1 > 0 else 0,
+                'banana': c2 if c2 > 0 else 0,
+                'egg': c3 if c3 > 0 else 0,
+            }
+
+            # update the consumption!
+            c_ref = db.collection('consumption').document(current_date)
+            c_ref.set(curr_c)
+        else: # no current stock count, this is the first run and we can just pass.
+            pass
+
+        # update current stock to firestore
+        stocks_ref.set(firestore_payload)
+
         print(sensor_val)
         # pub to stock thread
         client.publish("fridge/stock", sensor_val)

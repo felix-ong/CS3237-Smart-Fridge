@@ -62,8 +62,6 @@ def GEN_DATA(days_ago, peak_consume, min_consume=0, weekend_peak=True, noise_sd=
     '''
     
     assert(days_ago > 3) # otherwise error on SARIMA
-    
-    d, days_ago = floorDayNumDaysAgo(date.today(), days_ago, 0)
 
     mu, sig = 0, noise_sd # mean and standard deviation of noise
     noise = np.random.normal(mu, sig, days_ago)
@@ -186,13 +184,15 @@ def format_date(d):
 
 def backfill_consumption(n_data, db_ref):
     # EGGS
-    _, x1, y1 = GEN_DATA(days_ago=n_data, noise_sd=1, weekend_peak=True, peak_consume=3.5, min_consume=1)
+    x1, y1 = GEN_DATA(days_ago=n_data, noise_sd=1, weekend_peak=True, peak_consume=3.5, min_consume=1)
     # BANANAS
-    _, _, y2 = GEN_DATA(days_ago=n_data, noise_sd=0.6, weekend_peak=True, peak_consume=2, min_consume=1)
+    _, y2 = GEN_DATA(days_ago=n_data, noise_sd=0.6, weekend_peak=True, peak_consume=2, min_consume=1)
     # APPLES
-    _, _, y3 = GEN_DATA(days_ago=n_data, noise_sd=0.3, weekend_peak=False, peak_consume=1, min_consume=1)
+    _, y3 = GEN_DATA(days_ago=n_data, noise_sd=0.3, weekend_peak=False, peak_consume=1, min_consume=1)
 
     now = date.today()
+
+    print(f"backfilling consumption from date: {now - timedelta(days=n_data)}")
 
     for i in range(len(x1)):
         timestamp = (format_date(now - timedelta(days=(n_data - i))))
@@ -204,3 +204,44 @@ def backfill_consumption(n_data, db_ref):
         }
         doc_ref = db_ref.collection('consumption').document(timestamp)
         doc_ref.set(payload)
+
+'''
+Right before each prediction, add / update consumption in firestore.
+Assume day T-1 just finished (we are currently in day T). 
+Calculate the consumption: count(day T-2) - count(day T-1).
+
+If there are no counts for day T-2 or day T-1, just use fake consumption data (only true its truly first time setup).
+'''
+def calc_yesterdays_consumption(db, now):
+    yesterday, two_days_ago = format_date(now - timedelta(days=1)), format_date(now - timedelta(days=2))
+
+    # fetch stocks for day T-1 and T-2
+    doc1 = db.collection('stocks').document(yesterday).get()
+    doc2 = db.collection('stocks').document(two_days_ago).get()
+    if doc1.exists and doc2.exists:
+        doc1 = doc1.to_dict()
+        doc2 = doc2.to_dict()
+
+        doc_ref = db.collection('consumption').document(yesterday)
+
+        # calculate and update consumptions in firestore
+        doc_ref.set({
+            'banana': doc2['banana'] - doc1['banana'],
+            'apple': doc2['apple'] - doc1['apple'],
+            'egg': doc2['egg'] - doc1['egg'],
+            'timestamp': yesterday,
+        })
+
+    elif not doc1.exists and doc2.exists:
+        # didn't open frige yesterday, consumption was 0.
+
+        doc_ref = db.collection('consumption').document(yesterday)
+        doc_ref.set({
+            'banana': 0,
+            'apple': 0,
+            'egg': 0,
+            'timestamp': yesterday,
+        })
+
+    else:
+        pass # don't do anything, this will just use the 'fake' backfilled data
