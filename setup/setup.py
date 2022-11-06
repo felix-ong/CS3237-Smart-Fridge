@@ -17,7 +17,7 @@ cred = credentials.Certificate('cs3237-fridge-firebase-adminsdk-d14fo-88295eb35b
 app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-ITEMS = ['banana', 'apple', 'egg']
+ITEMS = ['banana', 'apple', 'orange']
 
 # TODO: make sure that deleting on collection that doesnt exist doesnt err.
 
@@ -26,7 +26,7 @@ Backfill consumptions for each item
 Delete the collection before each time.
 '''
 delete_collection(coll_ref=db.collection('consumption'), batch_size=60)
-backfill_consumption(n_data=60, db_ref=db) # adds egg, apple, banana consumption fake data
+backfill_consumption(n_data=60, db_ref=db) # adds orange, apple, banana consumption fake data
 
 '''
 JUST FOR DEMO - fill previous 2 day's counts on setup
@@ -37,16 +37,16 @@ now = date.today()
 yesterday, two_days_ago = format_date(now - timedelta(days=1)), format_date(now - timedelta(days=2))
 doc_ref = db.collection('stocks').document(yesterday)
 doc_ref.set({
-    'apple': 3,
-    'banana': 4,
-    'egg': 3,
+    'apple': 2,
+    'banana': 1,
+    'orange': 1,
     'timestamp': yesterday,
 })
 doc_ref = db.collection('stocks').document(two_days_ago)
 doc_ref.set({
-    'apple': 5,
-    'banana': 5,
-    'egg': 5,
+    'apple': 0,
+    'banana': 1,
+    'orange': 1,
     'timestamp': two_days_ago,
 })
 
@@ -66,7 +66,7 @@ Note: Less data might exist than specified by historical_window.
 TODO: predict should listen for a change in values to config (when app updates slider). then rerun ..
 '''
 
-# runs predictions on apples, bananas, eggs
+# runs predictions on apples, bananas, oranges
 # also calculates consumption right before
 calc_yesterdays_consumption(db, now)
 stock_predict(db)
