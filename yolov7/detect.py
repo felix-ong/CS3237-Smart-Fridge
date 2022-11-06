@@ -92,9 +92,9 @@ def on_message(client, userdata, msg):
 
             # previous stock count - current stock count
             curr_c = {
-                'apple' = s['apple'] - firestore_payload['apple'],
-                'banana' = s['banana'] - firestore_payload['banana'],
-                'egg' = s['egg'] - firestore_payload['egg'],
+                'apple': s['apple'] - firestore_payload['apple'],
+                'banana': s['banana'] - firestore_payload['banana'],
+                'egg': s['egg'] - firestore_payload['egg'],
             }
 
             c = consumption.to_dict()
@@ -113,9 +113,9 @@ def on_message(client, userdata, msg):
             c1, c2, c3 = s['apple'] - firestore_payload['apple'], s['banana'] - firestore_payload['banana'], s['egg'] - firestore_payload['egg']
             # only put consumption if it was positive
             curr_c = {
-                'apple' = c1 if c1 > 0 else 0,
-                'banana' = c2 if c2 > 0 else 0,
-                'egg' = c3 if c3 > 0 else 0,
+                'apple': c1 if c1 > 0 else 0,
+                'banana': c2 if c2 > 0 else 0,
+                'egg': c3 if c3 > 0 else 0,
             }
 
             # update the consumption!

@@ -68,6 +68,7 @@ TODO: predict should listen for a change in values to config (when app updates s
 
 # runs predictions on apples, bananas, eggs
 # also calculates consumption right before
+calc_yesterdays_consumption(db, now)
 stock_predict(db)
 
 # ALSO TODO: add the photo in imgur link to send to firebase just
