@@ -24,6 +24,8 @@ def take_photos():
         # Take picture using camera, then run YOLO model and save counts to database
         result, image = cam.read()
 
+        if not result: return
+
         print(f"Photo taken!\nSize: {image.shape}")
 
         # if image is dark, send prevImg to process (if prevImg exists and is not also dark)

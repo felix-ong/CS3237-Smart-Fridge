@@ -9,7 +9,10 @@ from dateutil.relativedelta import *
 
 from stock_predict import *
 
-cred = credentials.Certificate('../yolov7/cs3237-fridge-firebase-adminsdk-d14fo-88295eb35b.json')
+import time
+from threading import Thread
+
+cred = credentials.Certificate('cs3237-fridge-firebase-adminsdk-d14fo-88295eb35b.json')
 app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
@@ -47,9 +50,13 @@ doc_ref.set({
 })
 
 '''
-Delete config.
+Add default config
 '''
-delete_collection(coll_ref=db.collection('config'), batch_size=60)
+config_ref = db.collection('config').document('config')
+config_ref.set({
+    'prediction_window': 7,
+    'historical_window': 60,
+})
 
 '''
 Run prediction with values in firebase/config or defaulted vals = (60, 7).
@@ -67,9 +74,38 @@ stock_predict(db)
 
 # TODO: limits for prediction params on app should be min 14 for historical
 '''
-Start running detect.py ??
-
-Also start 2 threads:
+Start 2 threads:
     one should loop and run stock_predict at midnight
     one should run and listen for config changes to rerun stock_predict
+    
+Then start running detect.py in new process
 '''
+
+def daily_predict():
+    currdate = date.today().strftime("%d")
+    while True:
+        time.sleep(3600) # every hour
+        if date.today().strftime("%d") != currdate:
+            # run daily prediction
+            stock_predict(db)
+    
+# TODO: modify so we are only running on change i.e. add listener
+# https://firebase.google.com/docs/firestore/query-data/listen
+# caveat: callback triggers before data is written, 
+# need to add a delay because changes in metadata not supported in python client yet
+def predict_on_config_change():
+    curr_p, curr_h = 7, 60 # begin to check against default
+    while True:
+        time.sleep(10)
+        config = db.collection('config').document('config').get().to_dict()
+        h, p = config['historical_window'], config['prediction_window']
+        if h != curr_h or p != curr_p:
+            stock_predict(db)
+            # update local vals
+            curr_h, curr_p = h, p
+
+Thread(target=predict_on_config_change).start()
+Thread(target=daily_predict).start()
+
+while True:
+    pass # so process doesn't terminate
