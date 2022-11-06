@@ -154,7 +154,7 @@ def DISPLAY_DATA(now, y, yhat, item_name):
     plt.savefig(my_stringIObytes, format='jpg')
     my_stringIObytes.seek(0)
     my_base64_jpgData = base64.b64encode(my_stringIObytes.read())
-    return my_base64_jpgData
+    return my_base64_jpgData.decode('ascii')
 
 '''
 FIRESTORE UTILS

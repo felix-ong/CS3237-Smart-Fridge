@@ -101,6 +101,12 @@ def on_message(client, userdata, msg):
             }
 
             c = consumption.to_dict()
+
+            print('updating consumption in firebase...')
+            print(f'consumed {curr_c['apple']} apples')
+            print(f'consumed {curr_c['banana']} bananas')
+            print(f'consumed {curr_c['orange']} oranges')
+            
             # only add to today's total consumption if the consumption was positive
             c['apple'] += curr_c['apple'] if curr_c['apple'] > 0 else 0
             c['banana'] += curr_c['banana'] if curr_c['banana'] > 0 else 0
