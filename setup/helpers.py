@@ -176,7 +176,7 @@ each doc in consumption:
 {
     'apple': int,
     'banana': int,
-    'egg': int,
+    'orange': int,
 }
 '''
 
@@ -184,7 +184,7 @@ def format_date(d):
     return d.strftime("%Y%m%d")
 
 def backfill_consumption(n_data, db_ref):
-    # EGGS
+    # orangeS
     x1, y1 = GEN_DATA(days_ago=n_data, noise_sd=1, weekend_peak=True, peak_consume=3.5, min_consume=1)
     # BANANAS
     _, y2 = GEN_DATA(days_ago=n_data, noise_sd=0.6, weekend_peak=True, peak_consume=2, min_consume=1)
@@ -198,7 +198,7 @@ def backfill_consumption(n_data, db_ref):
     for i in range(len(x1)):
         timestamp = (format_date(now - timedelta(days=(n_data - i))))
         payload = {
-            'egg': y1[i],
+            'orange': y1[i],
             'banana': y2[i],
             'apple': y3[i],
             'timestamp': timestamp,
