@@ -210,6 +210,8 @@ Right before each prediction, add / update consumption in firestore.
 Assume day T-1 just finished (we are currently in day T). 
 Calculate the consumption: count(day T-2) - count(day T-1).
 
+Again, this is just for DEMO purposes.
+
 If there are no counts for day T-2 or day T-1, just use fake consumption data (only true its truly first time setup).
 '''
 def calc_yesterdays_consumption(db, now):
@@ -226,22 +228,14 @@ def calc_yesterdays_consumption(db, now):
 
         # calculate and update consumptions in firestore
         doc_ref.set({
-            'banana': doc2['banana'] - doc1['banana'],
-            'apple': doc2['apple'] - doc1['apple'],
-            'egg': doc2['egg'] - doc1['egg'],
+            'banana': doc2['banana'] - doc1['banana'] if doc2['banana'] - doc1['banana'] > 0 else 0,
+            'apple': doc2['apple'] - doc1['apple'] if doc2['apple'] - doc1['apple'] > 0 else 0,
+            'egg': doc2['egg'] - doc1['egg'] if doc2['egg'] - doc1['egg'] > 0 else 0,
             'timestamp': yesterday,
         })
 
     elif not doc1.exists and doc2.exists:
-        # didn't open frige yesterday, consumption was 0.
-
-        doc_ref = db.collection('consumption').document(yesterday)
-        doc_ref.set({
-            'banana': 0,
-            'apple': 0,
-            'egg': 0,
-            'timestamp': yesterday,
-        })
-
+        # shouldn't happen
+        pass
     else:
         pass # don't do anything, this will just use the 'fake' backfilled data
