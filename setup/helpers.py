@@ -98,7 +98,7 @@ def SARIMA_PREDICT(y, orders, num_predict):
     return yhat
     
 # pass in optional date which is where data will start from
-def DISPLAY_DATA(now, y, yhat, item_name):
+def DISPLAY_DATA(now, y, yhat, item_name, test_overlap=False, display_xticks=True):
 
     # --- PLOTTING --- #
     
@@ -109,7 +109,9 @@ def DISPLAY_DATA(now, y, yhat, item_name):
     XTICK_INTERVAL = 7 # x-axis interval
     
     x1 = list(range(len(y)))
-    x2 = list(range(len(y), len(y) + len(yhat)))
+    x2 = x1 # visually see overlap between y_test and yhat for predicted time frame
+    if not test_overlap:
+        x2 = list(range(len(y), len(y) + len(yhat)))
     
     plt.rcParams['figure.figsize'] = [15, 8]
     
@@ -139,13 +141,15 @@ def DISPLAY_DATA(now, y, yhat, item_name):
     xTicks = list(xTicks) + [curr_day] # add tick for today
     
     labels = [(now - timedelta(days=int(curr_day - d))).strftime("%a, %d/%m/%y") for d in xTicks]
-    ax.set_xticks(xTicks, labels=labels)
+    if display_xticks:
+        ax.set_xticks(xTicks, labels=labels)
         
     plt.title(f"{item_name.capitalize()} Prediction")
     plt.yticks(yTicks)
     # plt.xticks(xTicks, rotation=70) # this cuts off labels when save
-    plt.xticks(xTicks) # week interval x-axis
-    plt.vlines(verticalTicks, min(min(y_), min(yhat_)), max(max(y_), max(yhat_)) + 1, "red", "dotted")
+    if display_xticks:
+        plt.xticks(xTicks) # week interval x-axis
+        plt.vlines(verticalTicks, min(min(y_), min(yhat_)), max(max(y_), max(yhat_)) + 1, "red", "dotted")
     plt.xlabel('Day')
     plt.ylabel(f'Predicted item consumption of {item_name}')
     plt.legend(['Original data (truncated)', 'Predicted', f"{XTICK_INTERVAL} day interval"])
