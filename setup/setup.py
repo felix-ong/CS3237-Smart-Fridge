@@ -9,6 +9,7 @@ from dateutil.relativedelta import *
 
 from stock_predict import *
 import os
+import subprocess
 
 import time
 from threading import Thread
@@ -82,20 +83,20 @@ Start 2 threads:
 '''
 
 def daily_predict():
-    print('starting daily predict')
+    print('starting daily predict...')
     currdate = date.today().strftime("%d")
     while True:
         time.sleep(3600) # every hour
         if date.today().strftime("%d") != currdate:
             # run daily prediction
-            stock_predict(db)
+            subprocess.run(['python3', 'setup/stock_predict.py'])
     
 # TODO: modify so we are only running on change i.e. add listener
 # https://firebase.google.com/docs/firestore/query-data/listen
 # caveat: callback triggers before data is written, 
 # need to add a delay because changes in metadata not supported in python client yet
 def predict_on_config_change():
-    print('detecting config changes')
+    print('detecting config changes...')
     curr_p, curr_h = 7, 60 # begin to check against default
     while True:
         time.sleep(3)
@@ -103,7 +104,7 @@ def predict_on_config_change():
         h, p = config['historical_window'], config['prediction_window']
         if h != curr_h or p != curr_p:
             print('detected config change! running prediction with new params...')
-            stock_predict(db)
+            subprocess.run(['python3', 'setup/stock_predict.py'])
             # update local vals
             curr_h, curr_p = h, p
 
@@ -111,4 +112,4 @@ Thread(target=predict_on_config_change).start()
 Thread(target=daily_predict).start()
 
 # Then start running detect.py in new process
-os.system('python yolov7/detect.py') # TODO: change path
+os.system('python3 yolov7/detect.py')

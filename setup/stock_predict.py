@@ -1,6 +1,10 @@
 from helpers import *
 from datetime import *
 
+import firebase_admin
+from firebase_admin import firestore
+from firebase_admin import credentials
+
 MODEL_ORDERS = ((1,0,0), (1, 1, 1, 7))
 
 '''
@@ -28,8 +32,6 @@ def stock_predict(db):
         banana_data.append(counts['banana'])
         orange_data.append(counts['orange'])
 
-    assert(len(apple_data) > 7, 'Not enough consumption data!')
-
     predict_for_item(db, apple_data, prediction_window, 'apple', now)
     predict_for_item(db, banana_data, prediction_window, 'banana', now)
     predict_for_item(db, orange_data, prediction_window, 'orange', now)
@@ -55,3 +57,10 @@ def predict_for_item(db, data, prediction_window, item, now):
         'predicted_data': predicted.tolist(),
         'graph_img_base64': graph_img,
     })
+
+if __name__ == "__main__":
+    cred = credentials.Certificate('cs3237-fridge-firebase-adminsdk-d14fo-88295eb35b.json')
+    app = firebase_admin.initialize_app(cred)
+    db = firestore.client()
+
+    stock_predict(db)
