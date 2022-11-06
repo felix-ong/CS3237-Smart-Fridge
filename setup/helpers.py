@@ -141,7 +141,8 @@ def DISPLAY_DATA(now, y, yhat, item_name):
         
     plt.title(f"{item_name.capitalize()} Prediction")
     plt.yticks(yTicks)
-    plt.xticks(xTicks, rotation=70) # week interval x-axis
+    # plt.xticks(xTicks, rotation=70) # this cuts off labels when save
+    plt.xticks(xTicks) # week interval x-axis
     plt.vlines(verticalTicks, min(min(y_), min(yhat_)), max(max(y_), max(yhat_)) + 1, "red", "dotted")
     plt.xlabel('Day')
     plt.ylabel(f'Predicted item consumption of {item_name}')
@@ -149,6 +150,7 @@ def DISPLAY_DATA(now, y, yhat, item_name):
 
     # save plot to jpg
     my_stringIObytes = io.BytesIO()
+    plt.savefig('prediction.jpg')
     plt.savefig(my_stringIObytes, format='jpg')
     my_stringIObytes.seek(0)
     my_base64_jpgData = base64.b64encode(my_stringIObytes.read())
@@ -175,7 +177,7 @@ each doc in consumption:
 {
     'apple': int,
     'banana': int,
-    'egg': int,
+    'orange': int,
 }
 '''
 
@@ -183,7 +185,7 @@ def format_date(d):
     return d.strftime("%Y%m%d")
 
 def backfill_consumption(n_data, db_ref):
-    # EGGS
+    # orangeS
     x1, y1 = GEN_DATA(days_ago=n_data, noise_sd=1, weekend_peak=True, peak_consume=3.5, min_consume=1)
     # BANANAS
     _, y2 = GEN_DATA(days_ago=n_data, noise_sd=0.6, weekend_peak=True, peak_consume=2, min_consume=1)
@@ -197,7 +199,7 @@ def backfill_consumption(n_data, db_ref):
     for i in range(len(x1)):
         timestamp = (format_date(now - timedelta(days=(n_data - i))))
         payload = {
-            'egg': y1[i],
+            'orange': y1[i],
             'banana': y2[i],
             'apple': y3[i],
             'timestamp': timestamp,
@@ -209,6 +211,8 @@ def backfill_consumption(n_data, db_ref):
 Right before each prediction, add / update consumption in firestore.
 Assume day T-1 just finished (we are currently in day T). 
 Calculate the consumption: count(day T-2) - count(day T-1).
+
+Again, this is just for DEMO purposes.
 
 If there are no counts for day T-2 or day T-1, just use fake consumption data (only true its truly first time setup).
 '''
@@ -226,22 +230,14 @@ def calc_yesterdays_consumption(db, now):
 
         # calculate and update consumptions in firestore
         doc_ref.set({
-            'banana': doc2['banana'] - doc1['banana'],
-            'apple': doc2['apple'] - doc1['apple'],
-            'egg': doc2['egg'] - doc1['egg'],
+            'banana': doc2['banana'] - doc1['banana'] if doc2['banana'] - doc1['banana'] > 0 else 0,
+            'apple': doc2['apple'] - doc1['apple'] if doc2['apple'] - doc1['apple'] > 0 else 0,
+            'orange': doc2['orange'] - doc1['orange'] if doc2['orange'] - doc1['orange'] > 0 else 0,
             'timestamp': yesterday,
         })
 
     elif not doc1.exists and doc2.exists:
-        # didn't open frige yesterday, consumption was 0.
-
-        doc_ref = db.collection('consumption').document(yesterday)
-        doc_ref.set({
-            'banana': 0,
-            'apple': 0,
-            'egg': 0,
-            'timestamp': yesterday,
-        })
-
+        # shouldn't happen
+        pass
     else:
         pass # don't do anything, this will just use the 'fake' backfilled data

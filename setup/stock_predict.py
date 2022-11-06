@@ -21,18 +21,18 @@ def stock_predict(db):
 
     docs = db.collection(u'consumption').where(u'timestamp', u'>=', query_from).where(u'timestamp', u'<', curr_date).stream()
 
-    apple_data, banana_data, egg_data = [], [], []
+    apple_data, banana_data, orange_data = [], [], []
     for doc in docs:
         counts = doc.to_dict()
         apple_data.append(counts['apple'])
         banana_data.append(counts['banana'])
-        egg_data.append(counts['egg'])
+        orange_data.append(counts['orange'])
 
     assert(len(apple_data) > 7, 'Not enough consumption data!')
 
     predict_for_item(db, apple_data, prediction_window, 'apple', now)
     predict_for_item(db, banana_data, prediction_window, 'banana', now)
-    predict_for_item(db, egg_data, prediction_window, 'egg', now)
+    predict_for_item(db, orange_data, prediction_window, 'orange', now)
 
 def fetch_params(db):
     # fetch prediction parameters from firebase
