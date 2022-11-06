@@ -47,10 +47,13 @@ def on_message(client, userdata, msg):
         if (firebase_data):
             b_threshold = db.collection(str('predict')).document(str('banana')).get().to_dict()['predicted_data']
             a_threshold = db.collection(str('predict')).document(str('apple')).get().to_dict()['predicted_data']
-            e_threshold = db.collection(str('predict')).document(str('egg')).get().to_dict()['predicted_data']
-            thresholds = {'banana':sum(b_threshold), 'apple':sum(a_threshold), 'egg':sum(e_threshold)}
+            e_threshold = db.collection(str('predict')).document(str('orange')).get().to_dict()['predicted_data']
+            thresholds = {'banana':sum(b_threshold), 'apple':sum(a_threshold), 'orange':sum(e_threshold)}
         else:
-            thresholds = {'banana':3, 'apple':4, 'egg':5}
+            b_threshold = db.collection(str('predict_demo')).document(str('banana')).get().to_dict()['predicted_data']
+            a_threshold = db.collection(str('predict_demo')).document(str('apple')).get().to_dict()['predicted_data']
+            e_threshold = db.collection(str('predict_demo')).document(str('orange')).get().to_dict()['predicted_data']
+            thresholds = {'banana': sum(b_threshold), 'apple': sum(a_threshold), 'orange': sum(e_threshold)}
         sensor_val = ""
         firestore_payload = {}
         for item in FRIDGE_ITEMS:
@@ -94,14 +97,14 @@ def on_message(client, userdata, msg):
             curr_c = {
                 'apple': s['apple'] - firestore_payload['apple'],
                 'banana': s['banana'] - firestore_payload['banana'],
-                'egg': s['egg'] - firestore_payload['egg'],
+                'orange': s['orange'] - firestore_payload['orange'],
             }
 
             c = consumption.to_dict()
             # only add to today's total consumption if the consumption was positive
             c['apple'] += curr_c['apple'] if curr_c['apple'] > 0 else 0
             c['banana'] += curr_c['banana'] if curr_c['banana'] > 0 else 0
-            c['egg'] += curr_c['egg'] if curr_c['egg'] > 0 else 0
+            c['orange'] += curr_c['orange'] if curr_c['orange'] > 0 else 0
 
             # update the consumption!
             c_ref = db.collection('consumption').document(current_date)
@@ -110,12 +113,12 @@ def on_message(client, userdata, msg):
             s = stocks_ref.get().to_dict()
 
             # previous stock count - current stock count
-            c1, c2, c3 = s['apple'] - firestore_payload['apple'], s['banana'] - firestore_payload['banana'], s['egg'] - firestore_payload['egg']
+            c1, c2, c3 = s['apple'] - firestore_payload['apple'], s['banana'] - firestore_payload['banana'], s['orange'] - firestore_payload['orange']
             # only put consumption if it was positive
             curr_c = {
                 'apple': c1 if c1 > 0 else 0,
                 'banana': c2 if c2 > 0 else 0,
-                'egg': c3 if c3 > 0 else 0,
+                'orange': c3 if c3 > 0 else 0,
             }
 
             # update the consumption!
@@ -251,8 +254,8 @@ cred = credentials.Certificate('cs3237-fridge-firebase-adminsdk-d14fo-88295eb35b
 app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-FRIDGE_ITEMS = ['banana', 'apple', 'egg']
-ITEM_COLOURS = {'banana':'y', 'apple':'b', 'egg':'w'}
+FRIDGE_ITEMS = ['banana', 'apple', 'orange']
+ITEM_COLOURS = {'banana':'y', 'apple':'b', 'orange':'w'}
 firebase_data = True
 
 client = mqtt.Client()
