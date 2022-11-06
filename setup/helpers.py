@@ -149,6 +149,7 @@ def DISPLAY_DATA(now, y, yhat, item_name):
 
     # save plot to jpg
     my_stringIObytes = io.BytesIO()
+    plt.savefig('prediction.jpg')
     plt.savefig(my_stringIObytes, format='jpg')
     my_stringIObytes.seek(0)
     my_base64_jpgData = base64.b64encode(my_stringIObytes.read())
@@ -230,7 +231,7 @@ def calc_yesterdays_consumption(db, now):
         doc_ref.set({
             'banana': doc2['banana'] - doc1['banana'] if doc2['banana'] - doc1['banana'] > 0 else 0,
             'apple': doc2['apple'] - doc1['apple'] if doc2['apple'] - doc1['apple'] > 0 else 0,
-            'egg': doc2['egg'] - doc1['egg'] if doc2['egg'] - doc1['egg'] > 0 else 0,
+            'orange': doc2['orange'] - doc1['orange'] if doc2['orange'] - doc1['orange'] > 0 else 0,
             'timestamp': yesterday,
         })
 
