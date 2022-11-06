@@ -199,7 +199,7 @@ def backfill_consumption(n_data, db_ref):
 
     print(f"backfilling consumption from date: {now - timedelta(days=num_gen)}")
 
-    for i in range(len(num_gen)):
+    for i in range(num_gen):
         timestamp = (format_date(now - timedelta(days=(num_gen - i))))
         payload = {
             'orange': y1[i],
