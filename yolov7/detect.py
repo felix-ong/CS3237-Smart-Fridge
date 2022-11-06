@@ -110,6 +110,7 @@ def on_message(client, userdata, msg):
             c['apple'] += curr_c['apple'] if curr_c['apple'] > 0 else 0
             c['banana'] += curr_c['banana'] if curr_c['banana'] > 0 else 0
             c['orange'] += curr_c['orange'] if curr_c['orange'] > 0 else 0
+            c['timestamp'] = current_date
 
             # update the consumption!
             c_ref = db.collection('consumption').document(current_date)
@@ -124,6 +125,7 @@ def on_message(client, userdata, msg):
                 'apple': c1 if c1 > 0 else 0,
                 'banana': c2 if c2 > 0 else 0,
                 'orange': c3 if c3 > 0 else 0,
+                'timestamp': current_date,
             }
 
             # update the consumption!
@@ -154,13 +156,13 @@ def detect(save_img=False,
            name='exp',
            trace=False,
            nosave=True,
-           project='runs/detect',
+           project='yolov7/runs/detect',
            save_conf=False,
            save_txt=False,
            source='test.jpg',
            update=False,
            view_img=False,
-           weights='yolov7.pt'):
+           weights='yolov7/yolov7.pt'):
 
     # Directories
     save_dir = Path(increment_path(Path(project) / name, exist_ok=exist_ok))  # increment run
