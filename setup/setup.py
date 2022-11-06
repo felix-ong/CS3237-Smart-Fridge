@@ -12,7 +12,7 @@ from stock_predict import *
 import time
 from threading import Thread
 
-cred = credentials.Certificate('../yolov7/cs3237-fridge-firebase-adminsdk-d14fo-88295eb35b.json')
+cred = credentials.Certificate('cs3237-fridge-firebase-adminsdk-d14fo-88295eb35b.json')
 app = firebase_admin.initialize_app(cred)
 db = firestore.client()
 
