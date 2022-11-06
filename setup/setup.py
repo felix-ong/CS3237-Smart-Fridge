@@ -8,6 +8,7 @@ from datetime import *
 from dateutil.relativedelta import *
 
 from stock_predict import *
+import os
 
 import time
 from threading import Thread
@@ -25,7 +26,7 @@ Backfill consumptions for each item
 Delete the collection before each time.
 '''
 delete_collection(coll_ref=db.collection('consumption'), batch_size=60)
-backfill_consumption(n_data=120, db_ref=db) # adds egg, apple, banana consumption fake data
+backfill_consumption(n_data=60, db_ref=db) # adds egg, apple, banana consumption fake data
 
 '''
 JUST FOR DEMO - fill previous 2 day's counts on setup
@@ -77,11 +78,10 @@ stock_predict(db)
 Start 2 threads:
     one should loop and run stock_predict at midnight
     one should run and listen for config changes to rerun stock_predict
-    
-Then start running detect.py in new process
 '''
 
 def daily_predict():
+    print('starting daily predict')
     currdate = date.today().strftime("%d")
     while True:
         time.sleep(3600) # every hour
@@ -94,9 +94,10 @@ def daily_predict():
 # caveat: callback triggers before data is written, 
 # need to add a delay because changes in metadata not supported in python client yet
 def predict_on_config_change():
+    print('detecting config changes')
     curr_p, curr_h = 7, 60 # begin to check against default
     while True:
-        time.sleep(10)
+        time.sleep(3)
         config = db.collection('config').document('config').get().to_dict()
         h, p = config['historical_window'], config['prediction_window']
         if h != curr_h or p != curr_p:
@@ -107,5 +108,5 @@ def predict_on_config_change():
 Thread(target=predict_on_config_change).start()
 Thread(target=daily_predict).start()
 
-while True:
-    pass # so process doesn't terminate
+# Then start running detect.py in new process
+os.system('python yolov7/detect.py') # TODO: change path

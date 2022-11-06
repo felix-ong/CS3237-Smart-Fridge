@@ -41,7 +41,7 @@ def fetch_params(db):
     config = db.collection('config').document('config').get()
     if config.exists:
         conf = config.to_dict()
-        return conf['historical_window'], conf['prection_window']
+        return conf['historical_window'], conf['prediction_window']
     else:
         return 60, 7 # default, in case config doesn't exist
 
@@ -53,8 +53,8 @@ def predict_for_item(db, data, prediction_window, item, now):
 
     doc_ref = db.collection('predict').document(item)
     doc_ref.set({
-        'historical_data': data,
-        'predicted_data': predicted,
+        'historical_data': list(data),
+        'predicted_data': predicted.tolist(),
         'graph_img_base64': graph_img,
     })
 
@@ -98,4 +98,3 @@ def calc_yesterdays_consumption(db, now):
 
     else:
         pass # don't do anything, this will just use the 'fake' backfilled data
-    

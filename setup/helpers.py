@@ -186,11 +186,11 @@ def format_date(d):
 
 def backfill_consumption(n_data, db_ref):
     # EGGS
-    _, x1, y1 = GEN_DATA(days_ago=n_data, noise_sd=1, weekend_peak=True, peak_consume=3.5, min_consume=1)
+    x1, y1 = GEN_DATA(days_ago=n_data, noise_sd=1, weekend_peak=True, peak_consume=3.5, min_consume=1)
     # BANANAS
-    _, _, y2 = GEN_DATA(days_ago=n_data, noise_sd=0.6, weekend_peak=True, peak_consume=2, min_consume=1)
+    _, y2 = GEN_DATA(days_ago=n_data, noise_sd=0.6, weekend_peak=True, peak_consume=2, min_consume=1)
     # APPLES
-    _, _, y3 = GEN_DATA(days_ago=n_data, noise_sd=0.3, weekend_peak=False, peak_consume=1, min_consume=1)
+    _, y3 = GEN_DATA(days_ago=n_data, noise_sd=0.3, weekend_peak=False, peak_consume=1, min_consume=1)
 
     now = date.today()
 
