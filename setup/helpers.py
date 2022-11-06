@@ -50,7 +50,7 @@ def interp(x,y,num_pts):
     Y_ = X_Y_Spline(X_)
     return pos(X_),pos(Y_)
 
-def GEN_DATA(days_ago, peak_consume, min_consume=0, weekend_peak=True, noise_sd=1, testing=False):
+def GEN_DATA(days_ago, peak_consume, min_consume=0, weekend_peak=True, noise_sd=1):
     
     # --- GENERATE DATA --- #
     '''
@@ -62,6 +62,8 @@ def GEN_DATA(days_ago, peak_consume, min_consume=0, weekend_peak=True, noise_sd=
     '''
     
     assert(days_ago > 3) # otherwise error on SARIMA
+
+    _, days_ago = floorDayNumDaysAgo(date.today(), days_ago, 0)
 
     mu, sig = 0, noise_sd # mean and standard deviation of noise
     noise = np.random.normal(mu, sig, days_ago)
@@ -193,10 +195,12 @@ def backfill_consumption(n_data, db_ref):
 
     now = date.today()
 
-    print(f"backfilling consumption from date: {now - timedelta(days=n_data)}")
+    num_gen = len(x1)
 
-    for i in range(len(x1)):
-        timestamp = (format_date(now - timedelta(days=(n_data - i))))
+    print(f"backfilling consumption from date: {now - timedelta(days=num_gen)}")
+
+    for i in range(len(num_gen)):
+        timestamp = (format_date(now - timedelta(days=(num_gen - i))))
         payload = {
             'orange': y1[i],
             'banana': y2[i],
